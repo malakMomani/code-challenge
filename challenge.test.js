@@ -32,36 +32,39 @@ isSimilar("cat","act")
 
 const isSimilar = (arr) => {
     // Solution code here...
-    let sum1 = 0;
-    let sum2 = 0;
 
-    const first = arr[0].split('');
-    const second = arr[1].split('');
-    flag = 1;
 
-    for (let index = 0; index < first.length; index++) {
-        for (let j = 0; j < second.length; j++) {
-            if (!first.includes(second[j])) {
-                flag = 0
-            }
-
-        }
-    }
     if (arr.length === 0) {
         return false
     } else {
-        let len = arr[0].slice().length;
+        const first = arr[0].split('');
+        const second = arr[1].split('');
+        if (first.length !== second.length) {
+            return false;
+        }
+        let flag = 1;
 
-        for (let index = 0; index < len; index++) {
-            sum1 = sum1 + arr[0].charCodeAt(index);
+        for (let index = 0; index < first.length; index++) {
+            for (let j = 0; j < second.length; j++) {
+                if (!first.includes(second[j])) {
+                    flag = 0
+                }
+
+            }
         }
-        for (let index = 0; index < arr[1].slice().length; index++) {
-            sum2 = sum2 + arr[1].charCodeAt(index);
+        // let len = arr[0].slice().length;
+
+        // for (let index = 0; index < len; index++) {
+        //     sum1 = sum1 + arr[0].charCodeAt(index);
+        // }
+        // for (let index = 0; index < arr[1].slice().length; index++) {
+        //     sum2 = sum2 + arr[1].charCodeAt(index);
+        // }
+        if (flag) {
+            return true;
         }
     }
-    if (flag) {
-        return true;
-    }
+
     return false;
 };
 
